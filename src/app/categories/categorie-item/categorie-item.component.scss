@@ -1,0 +1,39 @@
+@import '../../app.component.scss';
+
+mat-list-item {
+
+    display: flex;
+    justify-content: center;
+
+    &:nth-child(1) {
+        margin-top: 15px;
+    }
+
+    .cat-img {
+        flex-basis: 10%;
+        color: darkgrey; 
+        
+        .like:hover {
+            color: gray;        
+        }
+    }
+    
+    .cat-content {
+        flex-basis: 70%;
+        padding-left: 20px;
+ 
+    }
+    
+    .cat-actions {
+        flex-basis: 20%;
+        color: darkgrey;
+        
+        .settings:hover {
+            color: gray;     
+        }
+
+        .delete:hover {
+            color: $delete-color;
+        }
+    }
+}

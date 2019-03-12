@@ -1,0 +1,69 @@
+<div class="container">
+  <section> 
+    <mat-card class="cat-container list-container">
+      <mat-card class="categories-card">
+        <mat-card-header>
+          <mat-card-title><h2>Movie categories</h2></mat-card-title>
+          <mat-card-subtitle>Find our suggestions for this evening!</mat-card-subtitle>
+        </mat-card-header>      
+        <mat-card-content class="all-width">
+          <button mat-raised-button color="new-color"
+                  class="new-button"
+                  [class.hidden]="!newFormHidden"
+                  (click)="newFormHidden = !newFormHidden"
+                  >+ New Category</button>   
+        </mat-card-content>
+        <mat-card-content [class.hidden]="newFormHidden">
+          <h4>Add a new categorie:</h4>
+          <mat-form-field class="all-width">
+            <input matInput 
+                  class="new-cat-title"
+                  placeholder="Title"
+                  [(ngModel)]="newCategory.title"
+                  [formControl]="titleFormControl">            
+            
+            <mat-error *ngIf="titleFormControl.hasError('required')">
+                    Title is <strong>required</strong>
+            </mat-error>
+            <mat-error *ngIf="!titleFormControl.hasError('CategoryTitleValidator') && !titleFormControl.hasError('required')">
+                    Title could not be <strong>empty</strong> 
+            </mat-error>    
+          </mat-form-field>
+          
+          <mat-form-field class="all-width">  
+            <textarea matInput
+                      class="new-cat-description" 
+                      placeholder="Description"
+                      [(ngModel)]="newCategory.description"></textarea>
+          </mat-form-field>        
+
+          <div class="form-actions">
+            <button mat-raised-button 
+                  class="cancel-button"
+                  (click)="newFormHidden = !newFormHidden;"
+                  (click)="resetNewForm()"
+                  >Cancel</button>  
+            <button mat-raised-button 
+                  class="save-button"
+                  (click)="addCategory()"
+                  [class.hidden]="(!titleFormControl.hasError('required') && newCategory.title.trim() === '') || titleFormControl.hasError('required')">
+                  Save</button>
+            <button mat-raised-button 
+                  class="disabled-button"
+                  [class.hidden]="(titleFormControl.hasError('required') || newCategory.title.trim() !== '') && !titleFormControl.hasError('required')">
+                  Save</button>      
+          </div>               
+        </mat-card-content>
+      </mat-card> 
+      <mat-list>
+        <div class="categorie-unit"
+             *ngFor="let categorie of categories">
+          <app-categorie-item [categorie]="categorie" 
+                              (deleteItem)="onRemoveCategories($event)"></app-categorie-item>   
+          <mat-divider></mat-divider>
+        </div>
+      </mat-list>
+    </mat-card>    
+  </section>
+</div>
+  

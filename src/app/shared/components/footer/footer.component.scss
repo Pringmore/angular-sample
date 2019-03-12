@@ -1,0 +1,22 @@
+@import '../../../app.component.scss';
+
+footer {
+    @media screen and (max-width: $break-sm){
+        width: 100%;
+    }
+
+    .page-footer {
+        width: 600px;
+        @extend .message;
+        @media screen and (max-width: $break-sm){
+            max-width: 400px;
+        }    
+    
+        .app-partners {
+            margin-top: 80px;
+            @media screen and (max-width: $break-sm) {
+                margin-left: 30px;;
+            }
+        }
+    }
+}

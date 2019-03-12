@@ -1,0 +1,14 @@
+<mat-list-item class="list-item">
+  <div class="cat-img">
+    <i class="material-icons like" color="primary">thumb_up</i>
+  </div>
+  <div class="cat-content">
+    <h4>{{categorie.title}}</h4> 
+  </div>
+  <div class="cat-actions">
+    <i class="material-icons settings">settings</i>
+    <i class="material-icons delete"
+       (click)="deleteCategorie(categorie)">
+      delete</i>
+  </div>
+</mat-list-item>

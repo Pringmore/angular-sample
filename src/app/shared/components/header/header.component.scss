@@ -1,0 +1,59 @@
+@import '../../../app.component.scss';
+
+header {
+
+  .page-header {
+      margin-bottom: 60px;
+      @media screen and (min-width: $break-sm) {
+        width: 600px;
+      }
+      @extend .message;
+      
+      a.logo-link {
+        @extend .logo-adapted;
+        color: white;
+        text-decoration: none;
+      
+        .logo {
+          font-size: 35px;
+        }  
+      }
+
+      .app-message {
+        margin-top: 80px;
+        @media screen and (max-width: $break-sm) {
+          margin-left: 30px;;
+        }
+      }
+      
+      .nav-menu-hor {
+        
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        @media screen and (max-width: $break-sm) {
+          justify-content: space-around;
+        }
+
+        .page-nav {
+          height: 70px;
+          padding: 15px 20px;
+          background-color: $flash-crevette;
+          border: 2px solid white;
+          text-decoration: none;
+          color: white;
+          @media screen and (max-width: $break-sm) {
+            height: 30px;
+            padding: 15px 10px;
+            font-size: 25px;
+
+          }
+
+          &:hover {
+            cursor: pointer;
+            text-decoration: underline;
+          }
+        }
+      }
+  }
+}
