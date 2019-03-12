@@ -1,0 +1,98 @@
+//colors
+$lightgray: #dedede;
+$grey: #eee;
+$delete-color: #ca0a0a;
+$cancel-color: red;
+$new-color: green;  
+$inactive-color: grey;
+$flash-crevette: #ff4949;
+
+//Breakpoints
+$break-xs: 420px;
+$break-sm: 650px;
+$break-md: 768px;
+$break-lg: 992px;
+$break-xl: 1200px;
+
+.hidden {
+	display: none;
+}
+
+.green-button {
+    background-color: $new-color;
+    color: white;
+    font-weight: bold;
+}
+
+.red-button {
+	background-color: $delete-color;
+    color: white;
+    font-weight: bold;
+}
+
+.gray-button {
+    background-color: $inactive-color;
+    color: white;
+    font-weight: bold;
+}
+
+.message {
+    text-align: left;
+    color: white;
+    font-size: 40px;
+}
+
+.message-small {
+    font-size: 25px;
+}
+
+.container {
+    margin: 0 auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;    
+    
+    section {
+        min-width: 400px;
+    } 
+
+    .material-icons {
+        font-family: 'Material Icons';
+        font-weight: normal;
+        font-style: normal;
+        font-size: 24px;  /* Preferred icon size */
+        display: inline-block;
+        line-height: 1;
+        cursor: pointer;
+        text-transform: none;
+        letter-spacing: normal;
+        word-wrap: normal;
+        white-space: nowrap;
+        direction: ltr;
+      
+        /* Support for all WebKit browsers. */
+        -webkit-font-smoothing: antialiased;
+        /* Support for Safari and Chrome. */
+        text-rendering: optimizeLegibility;
+      
+        /* Support for Firefox. */
+        -moz-osx-font-smoothing: grayscale;
+      
+        /* Support for IE. */
+        font-feature-settings: 'liga';
+    }
+}
+
+.logo-adapted {
+    @media screen and (min-width: $break-xl) {
+        position: absolute;
+        top: 15px;
+        left: 30px; 
+    }
+
+    @media screen and (max-width: $break-sm) {
+        position: absolute;
+        top: 15px;
+        left: 30px;
+    }
+}

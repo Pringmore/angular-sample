@@ -1,0 +1,34 @@
+@import '../../app.component.scss';
+
+.cat-container {
+    padding: 20px;
+    background-color: $grey;
+    border: 1px solid $lightgray;
+
+    mat-card-content {
+        padding: 0 20px;
+        max-width: 285px;
+
+        .new-button,
+        .save-button {
+            @extend .green-button;
+            margin-right: 10px;
+        }
+        
+        .cancel-button {
+            @extend .red-button;
+        }
+
+        .disabled-button {
+            @extend .gray-button;
+        }
+
+        .form-actions button {
+            margin-right: 10px;
+        }
+
+        .all-width {
+            width: 100%;
+        }
+    }
+}
