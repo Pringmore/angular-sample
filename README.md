@@ -2,4 +2,10 @@
 Some practice with Angular
 
 # Installation
-Please run 'npm install' then run 'ng serve' on your Terminal to launch the App
+Please run 'npm install' to initiate the App
+
+# Launch the Frontend
+Please run 'ng serve' on your Terminal to launch the App Frontend
+
+# Launch the Backend
+Please run 'npm run ng-server' on your Terminal to launch the Rest API App Backtend
