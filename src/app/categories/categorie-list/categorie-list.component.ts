@@ -12,6 +12,7 @@ import { FilledTitleValidator } from '../../shared/validators/categoryTitle.vali
 })
 export class CategorieListComponent implements OnInit {
 
+  categories: Categorie[] = [];
   newCategory: Categorie = new Categorie();
   newFormHidden: boolean = true;
   titleFormControl = new FormControl('', [
@@ -22,28 +23,38 @@ export class CategorieListComponent implements OnInit {
   constructor( private categoriesDataService: CategoriesDataService ) {}
 
   ngOnInit() {
+    this.categoriesDataService.getAllCategories()
+      .subscribe(
+        (categories) => {
+            this.categories = categories;
+        }
+      );
   }
 
   // add a new element
   addCategory() {
-      //this.newFormHidden = !this.newFormHidden;
-      this.categoriesDataService.addCategorie(this.newCategory);
-      this.resetNewForm();
+    //this.newFormHidden = !this.newFormHidden;
+    this.categoriesDataService.addCategorie(this.newCategory)
+      .subscribe(
+        (newCategory) => {
+            this.categories = this.categories.concat(newCategory);
+        }
+      );
+    this.resetNewForm();
   }
   
-  // update an element
-  onRemoveCategories(categorie: Categorie){
-    this.categoriesDataService.deleteCategorie(categorie.id);
+  // remove an element
+  onRemoveCategorie(categorie: Categorie){
+    this.categoriesDataService.deleteCategorie(categorie.id)
+      .subscribe(
+        (_) => {
+            this.categories = this.categories.filter(element => element.id !== categorie.id);
+        }
+      );
   }
 
-  // get all elements  
-  get categories() {
-    return this.categoriesDataService.getAllCategories();
-  }
-  
   resetNewForm(){
     this.newCategory = new Categorie();
     this.titleFormControl.reset();
   }
-
 }

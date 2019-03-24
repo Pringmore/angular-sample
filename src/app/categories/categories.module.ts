@@ -6,6 +6,7 @@ import { CategorieListComponent } from './categorie-list/categorie-list.componen
 import { MaterialModule } from '../shared/material.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CategorieItemComponent } from './categorie-item/categorie-item.component';
+import { ApiService } from './api.service';
 
 @NgModule({
   declarations: [CategorieListComponent, CategorieItemComponent],
@@ -15,6 +16,7 @@ import { CategorieItemComponent } from './categorie-item/categorie-item.componen
     MaterialModule,
     FormsModule,
     ReactiveFormsModule
-  ]
+  ],
+  providers: [ApiService],
 })
 export class CategoriesModule {}

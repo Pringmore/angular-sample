@@ -59,7 +59,7 @@
         <div class="categorie-unit"
              *ngFor="let categorie of categories">
           <app-categorie-item [categorie]="categorie" 
-                              (deleteItem)="onRemoveCategories($event)"></app-categorie-item>   
+                              (deleteItem)="onRemoveCategorie($event)"></app-categorie-item>   
           <mat-divider></mat-divider>
         </div>
       </mat-list>

@@ -1,63 +1,40 @@
 import { Injectable } from '@angular/core';
 import { Categorie } from '../shared/Models/categories.model';
-import { element } from '@angular/core/src/render3';
+import { ApiService } from './api.service';
+import { Observable } from 'rxjs/Observable';
+import { Observer } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class CategoriesDataService {
 
-  categories : Categorie[]= [
-    {
-      id: 0,
-      title : 'RomanceRomance',
-      description: 'Find some flavor of romance ...'
-    },
-    {
-      id: 1,
-      title : 'Action',
-      description: 'Let yourself diving into the scenes'
-    },
-    {
-      id: 2,
-      title : 'Drama',
-      description: 'Let yourself diving into the scenes'
-    },
-    {
-      id: 3,
-      title : 'Fantasy',
-      description: 'Let yourself diving into the scenes'
-    },
-    {
-      id: 4,
-      title : 'War',
-      description: 'Let yourself diving into the scenes'
-    },
-    {
-      id: 5,
-      title : 'Anime',
-      description: 'Let yourself diving into the scenes'
-    }
-  ];
+  categories : Categorie[];
 
-  constructor() { }
+  constructor(private api: ApiService) { }
 
-  addCategorie(categorie: Categorie): CategoriesDataService {
-    if (this.categories.length)
-    categorie.id = this.categories[this.categories.length-1].id + 1;
-    else
-    categorie.id = 0;
-
-    this.categories.unshift(categorie);
-    return this;
+  // Similar to CREATE /categories
+  addCategorie(categorie: Categorie): Observable<Categorie> {
+    return this.api.createCategory(categorie);
+  }
+  
+  // Similar to GET /categories
+  getAllCategories(): Observable<Categorie[]> {
+    return this.api.getCategories();
   }
 
-  deleteCategorie(id: number): CategoriesDataService {
-    this.categories = this.categories.filter(element => element.id !== id);
-    return this;
+  // Similar to GET /categories/:id
+  getCategoryById(categoryId: number): Observable<Categorie> {
+    return this.api.getCategoryById(categoryId);
   }
 
-  getAllCategories(): Categorie[] {
-    return this.categories;
+  // Similar to PUT /categories/:id
+  updateCategory(category: Categorie): Observable<Categorie> {
+    return this.api.updateCategoryById(category);
+  }
+
+  // Similar to DELETE /categories/:id
+  deleteCategorie(id: number): Observable<Categorie> {
+    return this.api.deleteCategoryById(id);
   }
 }
